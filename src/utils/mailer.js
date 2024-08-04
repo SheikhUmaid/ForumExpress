@@ -12,7 +12,10 @@ const transporter = nodeMailer.createTransport({
 })
 
 
-const SendMail = async (mailInfo)=>{
+const SendMail = async (mailInfo = { to: "", subject: "", body: "",})=>{
+    if(!to || !subject || !body) {
+        throw new Error("required all arguments");
+    }
     try {
         const info = await transporter.sendMail({
             from: process.env.MAILUSER,
