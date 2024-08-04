@@ -159,4 +159,27 @@ const refreshAccessToken = asyncHandler(async (req,res) => {
 
 
 
-export {registerUser, loginUser, logoutUser, refreshAccessToken}
+
+const verifyUser = asyncHandler(async (req,res) =>{
+    const {userId, verificationString} = req.params
+    if(!userId && ! verificationString) throw new ApiError(400, "Invalid parameters");
+    let user = await User.findById(userId).select("-password -refreshToken")
+    if(!user) throw new ApiError(404, "User Not Found");
+    if(user.isVerified){
+        return res.status(201).json(
+            new ApiResponse(21,{}," user is already verified")
+        )
+    }
+    if (user.verificationString != verificationString) throw new ApiError(400, "Could not verify this user");
+    user = await User.updateOne({_id: userId},{
+        $set:{
+            isVerified:true,
+        }
+    })
+    return res.status(200).json(
+        new ApiResponse(200, user, "The User has been verified successfully")
+    )
+
+})
+
+export {registerUser, loginUser, logoutUser, refreshAccessToken, verifyUser}

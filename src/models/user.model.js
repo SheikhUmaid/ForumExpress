@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import {v4 as uuidv4} from "uuid";
+import SendMail from "../utils/mailer.js";
 
 const userSchema = mongoose.Schema(
     {
@@ -50,6 +52,9 @@ const userSchema = mongoose.Schema(
         isVerified: {
             type: Boolean, 
             default: false
+        },
+        verificationString: {
+            type:String,
         }
     },
     {
@@ -58,7 +63,18 @@ const userSchema = mongoose.Schema(
 );
 
 userSchema.plugin(mongooseAggregatePaginate);//not used yet
+
+
 userSchema.pre("save", async function (next) {
+    console.log("user pre in voked");
+    
+    const uuid = uuidv4();
+    this.verificationString = uuid;
+    await SendMail({
+        to: this.email,
+        subject: "Your Verification Link for this app",
+        body:`click on the link above to verify your account https://127.0.0.1:3000/verify/${this._id}/${this.verificationString}`
+    })
     if (!this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password, 8);
     next();
