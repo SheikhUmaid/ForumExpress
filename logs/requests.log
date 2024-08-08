@@ -1,0 +1,13 @@
+2024-08-08T18:25:17.639Z info: POST /users/login/ 404 360 - 96.914 ms {"username":"shiekh","password":"12qwaszx"}
+2024-08-08T18:25:45.782Z info: POST /users/register/ 409 360 - 33.627 ms {"username":"sheikh","email":"sheikhumaid@pm.me","name":"jhon doe","password":"12qwaszx"}
+2024-08-08T18:26:44.920Z info: POST /users/login/ 404 360 - 5.271 ms {"username":"shiekh","password":"12qwaszx"}
+2024-08-08T18:26:55.319Z info: POST /users/login/ 404 360 - 6.715 ms {"username":"shiekh","password":"12qwaszx"}
+2024-08-08T18:27:04.604Z info: POST /users/login/ 500 536 - 37.758 ms {"username":"sheikh","password":"12qwaszx"}
+2024-08-08T18:27:22.478Z info: POST /users/login/ 500 536 - 16.435 ms {"username":"sheikh","password":"12qwaszx"}
+2024-08-08T18:28:26.017Z info: POST /users/register/ 500 923 - 15.805 ms {"username":"sheikhh","email":"sheikhumaid@pm.me","name":"jhon doe","password":"12qwaszx"}
+2024-08-08T18:29:26.409Z info: POST /users/register/ 500 783 - 158.687 ms {"username":"sheikhh","email":"sheikhumaid@pm.me","name":"jhon doe","password":"12qwaszx"}
+2024-08-08T18:30:24.917Z info: POST /users/register/ 500 783 - 113.952 ms {"username":"sheikhh","email":"sheikhumaid@pm.me","name":"jhon doe","password":"12qwaszx"}
+2024-08-08T18:30:42.495Z info: POST /users/register/ 200 367 - 55.481 ms {"username":"sheikhh","email":"sheikhhumaid@pm.me","name":"jhon doe","password":"12qwaszx"}
+2024-08-08T18:31:25.017Z info: POST /users/login/ 200 1079 - 41.693 ms {"username":"sheikhh","password":"12qwaszx"}
+2024-08-08T18:35:29.409Z info: POST /users/refresh-token 200 336 - 21.865 ms {}
+2024-08-08T18:35:44.150Z info: GET /query/get-all-queries/ 200 7659 - 25.277 ms {}

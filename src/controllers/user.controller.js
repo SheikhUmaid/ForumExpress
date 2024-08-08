@@ -7,8 +7,6 @@ import jwt from "jsonwebtoken"
 
 
 
-
-
 const registerUser = asyncHandler(async (req,res)=>{
     const {username, email,password, name} = req.body
     if ([username, email, password, name].some((field) => field.trim()==="")){
